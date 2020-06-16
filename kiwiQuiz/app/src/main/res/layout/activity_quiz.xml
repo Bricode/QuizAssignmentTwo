@@ -7,57 +7,11 @@
     android:background="#A9D9DF"
     tools:context=".Quiz">
 
-    <RadioButton
-        android:id="@+id/selectionA"
-        android:layout_width="175dp"
-        android:layout_height="154dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="32dp"
-        android:text="RadioButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PictureOfPlace" />
-
-    <RadioButton
-        android:id="@+id/selectionB"
-        android:layout_width="175dp"
-        android:layout_height="154dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="5dp"
-        android:text="RadioButton"
-        app:layout_constraintEnd_toStartOf="@+id/selectionC"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectionD" />
-
-    <RadioButton
-        android:id="@+id/selectionC"
-        android:layout_width="175dp"
-        android:layout_height="154dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="32dp"
-        android:text="RadioButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/selectionB"
-        app:layout_constraintTop_toBottomOf="@+id/selectionA" />
-
-    <RadioButton
-        android:id="@+id/selectionD"
-        android:layout_width="175dp"
-        android:layout_height="154dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="5dp"
-        android:text="RadioButton"
-        app:layout_constraintEnd_toStartOf="@+id/selectionA"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PictureOfPlace" />
-
     <TextView
         android:id="@+id/questionText"
         android:layout_width="354dp"
         android:layout_height="110dp"
-        android:layout_marginStart="26dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:text="Where in New Zealand is ski field name located?"
@@ -73,11 +27,45 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="21dp"
-        app:layout_constraintBottom_toTopOf="@+id/selectionA"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionText"
         app:srcCompat="@drawable/abc_vector_test" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="384dp"
+        android:layout_height="241dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="74dp"
+        android:layout_marginBottom="62dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PictureOfPlace">
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="RadioButton" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="RadioButton" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="RadioButton" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="RadioButton" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
