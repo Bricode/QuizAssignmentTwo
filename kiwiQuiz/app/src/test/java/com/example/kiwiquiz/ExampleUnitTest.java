@@ -1,6 +1,13 @@
 package com.example.kiwiquiz;
 
+import android.content.res.AssetManager;
+
 import org.junit.Test;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import static org.junit.Assert.*;
 
@@ -11,7 +18,18 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     @Test
-    public void addition_isCorrect() {
+    public void addition_isCorrect() throws IOException {
+        String[] cityNameArray = new String[0];
+        String assetFileName = "Answers.txt";
+        AssetManager am = getAssets();
+        InputStream is = am.open(assetFileName);
+        InputStreamReader ir = new InputStreamReader(is);
+        BufferedReader br = new BufferedReader(ir);
+        String newCity;
+        while ((newCity = br.readLine()) != null) {
+            cityNameArray.equals(newCity);
+        }
         assertEquals(4, 2 + 2);
     }
+
 }
