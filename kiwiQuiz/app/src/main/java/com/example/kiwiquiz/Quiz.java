@@ -20,9 +20,9 @@ import java.io.InputStreamReader;
 
 public class Quiz extends AppCompatActivity implements View.OnClickListener{
 
-    private Integer[] answered = new Integer[10];
+    private int[] answered = new int[10];
 
-    private Question[] questions = new Question[2];
+    private Question[] questions = new Question[10];
     private int score = 0;
     private int questionNumber = 0;
     private String[] cityNameArray;
@@ -35,7 +35,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener{
     private String Answer;
 
     public void readFile() throws IOException {
-        cityNameArray = new String[12];
+        cityNameArray = new String[60];
         String assetFileName = "Answers.txt";
         AssetManager am = getAssets();
         InputStream is = am.open(assetFileName);
@@ -49,7 +49,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener{
             i++;
         }
         i=0;
-        for (int j = 0; j < 12; j+=6) {
+        for (int j = 0; j < 60; j+=6) {
             questions[i] = new Question(cityNameArray[0 + j],cityNameArray[1 + j],cityNameArray[2 + j],cityNameArray[3 + j], cityNameArray[4 + j],cityNameArray[5 + j]);
             i++;
         }
@@ -107,7 +107,10 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener{
             dialog.setPositiveButton(("Finish quiz"), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-                    Intent finish = new Intent(Quiz.this, MainActivity.class);
+                    Intent finish = new Intent(Quiz.this, Results.class);
+                    Bundle extra = new Bundle();
+                    extra.putIntArray("score",answered);
+                    finish.putExtra("test", extra);
                     startActivity(finish);
                 }
             });
@@ -124,19 +127,20 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener{
                     if (A.getText().equals(Answer)) {
                         Toast.makeText(this, "Correct," + questions[questionNumber].getNameOfResort() + " is found close to " + A.getText(), Toast.LENGTH_LONG).show();
                         alertBuilder("Correct," + questions[questionNumber].getNameOfResort() + " is found close to " + A.getText(), Boolean.TRUE);
-                        score++;
                         answered[questionNumber] = 1;
+                        System.out.println(answered[0]);
                         break;
                     } else
                         Toast.makeText(this, "Wrong", Toast.LENGTH_LONG).show();
                         alertBuilder("Wrong" + questions[questionNumber].getNameOfResort() + " is found close to " + Answer, Boolean.TRUE);
                     answered[questionNumber] = 0;
+                    System.out.println(answered[0]);
                     break;
                 case R.id.radioButtonB:
                     if (B.getText().equals(Answer)) {
                         alertBuilder("Correct," + questions[questionNumber].getNameOfResort() + " is found close to " + B.getText(), Boolean.TRUE);
                         Toast.makeText(this, "Correct", Toast.LENGTH_LONG).show();
-                        score++;
+
                         alertBuilder("Correct", Boolean.TRUE);
                         answered[questionNumber] = 1;
                         break;
@@ -149,7 +153,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener{
                     if (C.getText().equals(Answer)) {
                         alertBuilder("Correct," + questions[questionNumber].getNameOfResort() + " is found close to " + C.getText(), Boolean.TRUE);
                         Toast.makeText(this, "Correct", Toast.LENGTH_LONG).show();
-                        score++;
+
                         answered[questionNumber] = 1;
                         break;
                     } else
@@ -160,7 +164,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener{
                     if (D.getText().equals(Answer)) {
                         alertBuilder("Correct," + questions[questionNumber].getNameOfResort() + " is found close to " + D.getText(), Boolean.TRUE);
                         Toast.makeText(this, "Correct", Toast.LENGTH_LONG).show();
-                        score++;
+
                         answered[questionNumber] = 1;
                         break;
                     } else

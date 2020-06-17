@@ -10,50 +10,78 @@
         android:id="@+id/Restart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="29dp"
         android:text="Restart"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="383dp" />
+        app:layout_constraintBottom_toTopOf="@+id/Menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AnsweredIncorrectly" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
+        android:id="@+id/Title"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginBottom="27dp"
         android:text="You finished the quiz"
-        android:textSize="30sp"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="25dp" />
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/ScoreText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="300dp"
-        android:layout_height="41dp"
+        android:id="@+id/ScoreText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="20dp"
         android:text="Your score was placeholder"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="112dp" />
+        app:layout_constraintBottom_toTopOf="@+id/answeredCorrectly"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Title" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="302dp"
-        android:layout_height="53dp"
-        android:text="You answered temp correctly"
-        android:textSize="20sp"
-        tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="191dp" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="298dp"
-        android:layout_height="68dp"
+        android:id="@+id/AnsweredIncorrectly"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="49dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="42dp"
         android:text="You answered temp incorrectly"
-        tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="273dp" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/Restart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/answeredCorrectly" />
 
     <Button
         android:id="@+id/Menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="222dp"
         android:text="Menu"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="460dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/Restart"
+        app:layout_constraintTop_toBottomOf="@+id/Restart" />
+
+    <TextView
+        android:id="@+id/answeredCorrectly"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="38dp"
+        android:text="You answered temp correctly"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/AnsweredIncorrectly"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ScoreText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

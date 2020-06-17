@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(startQuiz);
                 break;
             case R.id.button2:
-                System.exit(0);
+
                 break;
         }
 

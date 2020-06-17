@@ -19,17 +19,7 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws IOException {
-        String[] cityNameArray = new String[0];
-        String assetFileName = "Answers.txt";
-        AssetManager am = getAssets();
-        InputStream is = am.open(assetFileName);
-        InputStreamReader ir = new InputStreamReader(is);
-        BufferedReader br = new BufferedReader(ir);
-        String newCity;
-        while ((newCity = br.readLine()) != null) {
-            cityNameArray.equals(newCity);
-        }
-        assertEquals(4, 2 + 2);
+
     }
 
 }
