@@ -27,6 +27,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
+        //moving to the start of the quiz intent
         Intent startQuiz = new Intent(HomePage.this, Quiz.class);
         startActivity(startQuiz);
     }

@@ -1,6 +1,7 @@
 package com.example.kiwiquiz;
 
 public class Question {
+    //creating a questions fields
     private String questionA;
     private String questionB;
     private String questionC;
@@ -8,6 +9,7 @@ public class Question {
     private String nameOfResort;
     private String answer;
 
+    //defining each questions fields
     public Question(String questionA, String questionB, String questionC, String questionD, String nameOfResort, String answer ) {
     this.questionA = questionA;
     this.questionB = questionB;
@@ -15,9 +17,9 @@ public class Question {
     this.questionD = questionD;
     this.nameOfResort = nameOfResort;
     this.answer = answer;
-
     }
 
+    //getters and setters for the question class
     public String getQuestionA() {
         return questionA;
     }
@@ -57,10 +59,12 @@ public class Question {
     public void setNameOfResort(String nameOfResort) {
         this.nameOfResort = nameOfResort;
     }
+
     public String getAnswer() {
         return answer;
     }
-    public void setAnswer() {
+
+    public void setAnswer(String answer) {
         this.answer = answer;
     }
 }

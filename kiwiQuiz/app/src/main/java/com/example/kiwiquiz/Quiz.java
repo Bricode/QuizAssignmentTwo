@@ -20,10 +20,20 @@ import java.io.InputStreamReader;
 
 public class Quiz extends AppCompatActivity implements View.OnClickListener{
 
+    private final int QUIZLENGTH = 60;
+    //this keeps track of which questions were answered correctly and incorrectly
     private int[] answered = new int[10];
+    //the array to store each completed question
     private Question[] questions = new Question[10];
-    private int questionNumber = 0;
+    //array to store each image
+    private int[] imagesArray = {R.drawable.coronet, R.drawable.cardrona,R.drawable.whakapapa,
+            R.drawable.manganui,R.drawable.rainbow,R.drawable.treble,R.drawable.hamner,R.drawable.temple,R.drawable.broken,R.drawable.porters};
+    //the temporary array to load all of the txt data into before passing into a question
     private String[] cityNameArray;
+
+    private int questionNumber = 0;
+
+    //Loading the gui elements
     private RadioButton A;
     private RadioButton B;
     private RadioButton C;
@@ -34,37 +44,44 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener{
     private ImageView image;
 
 
-
     public void readFile() throws IOException {
-        cityNameArray = new String[60];
+        //intialising the array
+        cityNameArray = new String[QUIZLENGTH];
+        //The code to load in the .txt file
         String assetFileName = "Answers.txt";
         AssetManager am = getAssets();
         InputStream is = am.open(assetFileName);
         InputStreamReader ir = new InputStreamReader(is);
         BufferedReader br = new BufferedReader(ir);
         String newCity;
+        //needed this int to increment through the array as the while loop has no loop number
         int i = 0;
         while ((newCity = br.readLine()) != null) {
             cityNameArray[i] = newCity;
-
             System.out.println(i);
             System.out.println(cityNameArray[i]);
             i++;
         }
         i=0;
-        for (int j = 0; j < 60; j+=6) {
-            questions[i] = new Question(cityNameArray[0 + j],cityNameArray[1 + j],cityNameArray[2 + j],cityNameArray[3 + j], cityNameArray[4 + j],cityNameArray[5 + j]);
+        //Loading the questions with data
+        for (int j = 0; j < QUIZLENGTH; j+=6) {
+            questions[i] = new Question(cityNameArray[0 + j],cityNameArray[1 + j],cityNameArray[2 + j],
+                    cityNameArray[3 + j], cityNameArray[4 + j],cityNameArray[5 + j]);
             i++;
         }
         br.close();
     }
+    //the method to update the text on screen and set all radiobuttons to unclicked
     public void populateQuestions() {
         A.setText(questions[questionNumber].getQuestionA());
         B.setText(questions[questionNumber].getQuestionB());
         C.setText(questions[questionNumber].getQuestionC());
         D.setText(questions[questionNumber].getQuestionD());
         resortName.setText("Which of these is the closest to " + questions[questionNumber].getNameOfResort());
+        image.setBackground(getResources().getDrawable(imagesArray[questionNumber]));
+
         Answer = questions[questionNumber].getAnswer();
+
         A.setChecked(false);
         B.setChecked(false);
         C.setChecked(false);
@@ -75,6 +92,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+        //getting the ids
          A = findViewById(R.id.radioButtonA);
          B = findViewById(R.id.radioButtonB);
          C = findViewById(R.id.radioButtonC);
@@ -82,6 +100,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener{
          group = findViewById(R.id.radioGroup);
          resortName = findViewById(R.id.questionText);
          image = findViewById(R.id.PictureOfPlace);
+         //creating onclick listeners
         A.setOnClickListener(this);
         B.setOnClickListener(this);
         C.setOnClickListener(this);
@@ -94,9 +113,12 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener{
         populateQuestions();
     }
 
+    //This is the method that pops up the alerts once a user has answered a question
     public void alertBuilder(String input, Boolean next) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(Quiz.this);
+        //set the text on the top of the dialog box
         dialog.setMessage(input);
+        //checks that the final question hasnt been answered yet
         if(next == true) {
             dialog.setPositiveButton(("Next Question"), new DialogInterface.OnClickListener() {
                 @Override
@@ -107,6 +129,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener{
                 }
             });
         }
+        //if final question has been answered, will display this text box
         else
             dialog.setPositiveButton(("Finish quiz"), new DialogInterface.OnClickListener() {
                 @Override
@@ -121,19 +144,28 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener{
         dialog.show();
     }
 
+    //the code for once a radio button has been clicked
     @Override
     public void onClick(View v) {
+        //checks that the quiz isnt finished
         if(questionNumber<questions.length) {
+            //checks which id has been pressed (cant use previously defined as It wants a constant id)
             switch (group.getCheckedRadioButtonId()) {
+
                 case R.id.radioButtonA:
+                    //checks if the strings are equal
                     if (A.getText().equals(Answer)) {
+                        //displays the alert, with the approriate information
                         alertBuilder("Correct, " + questions[questionNumber].getNameOfResort() + " is found close to " + A.getText(), Boolean.TRUE);
+                        //sets the current questions position in the answered array to one, allows for question tracking
                         answered[questionNumber] = 1;
                         break;
                     } else
+                        //displays the alert providing feedback to the user
                         alertBuilder("Wrong, " + questions[questionNumber].getNameOfResort() + " is found close to " + Answer, Boolean.TRUE);
                     answered[questionNumber] = 0;
                     break;
+
                 case R.id.radioButtonB:
                     if (B.getText().equals(Answer)) {
                         alertBuilder("Correct, " + questions[questionNumber].getNameOfResort() + " is found close to " + B.getText(), Boolean.TRUE);
@@ -143,14 +175,17 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener{
                         alertBuilder("Wrong, " + questions[questionNumber].getNameOfResort() + " is found close to " + Answer, Boolean.TRUE);
                         answered[questionNumber] = 0;
                     break;
+
                 case R.id.radioButtonC:
                     if (C.getText().equals(Answer)) {
                         alertBuilder("Correct, " + questions[questionNumber].getNameOfResort() + " is found close to " + C.getText(), Boolean.TRUE);
                         answered[questionNumber] = 1;
                         break;
                     } else
-                        alertBuilder("Wrong, " + questions[questionNumber].getNameOfResort() + " is found close to " + Answer, Boolean.TRUE);
+                    alertBuilder("Wrong, " + questions[questionNumber].getNameOfResort() + " is found close to " + Answer, Boolean.TRUE);
+                    answered[questionNumber] = 0;
                     break;
+
                 case R.id.radioButtonD:
                     if (D.getText().equals(Answer)) {
                         alertBuilder("Correct, " + questions[questionNumber].getNameOfResort() + " is found close to " + D.getText(), Boolean.TRUE);
@@ -161,7 +196,9 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener{
                     answered[questionNumber] = 0;
                     break;
             }
+            //increments the question number
             questionNumber++;
+            //checks that the quiz isnt finished, before populating next question on screen
             if(questionNumber != questions.length) {
                 populateQuestions();
             }
