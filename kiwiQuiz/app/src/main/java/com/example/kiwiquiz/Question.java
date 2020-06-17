@@ -6,13 +6,16 @@ public class Question {
     private String questionC;
     private String questionD;
     private String nameOfResort;
+    private String answer;
 
-    public Question(String questionA, String questionB, String questionC, String questionD, String nameOfResort ) {
+    public Question(String questionA, String questionB, String questionC, String questionD, String nameOfResort, String answer ) {
     this.questionA = questionA;
     this.questionB = questionB;
     this.questionC = questionC;
     this.questionD = questionD;
     this.nameOfResort = nameOfResort;
+    this.answer = answer;
+
     }
 
     public String getQuestionA() {
@@ -53,5 +56,11 @@ public class Question {
 
     public void setNameOfResort(String nameOfResort) {
         this.nameOfResort = nameOfResort;
+    }
+    public String getAnswer() {
+        return answer;
+    }
+    public void setAnswer() {
+        this.answer = answer;
     }
 }
