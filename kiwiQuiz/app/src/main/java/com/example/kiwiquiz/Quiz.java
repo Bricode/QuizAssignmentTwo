@@ -58,8 +58,6 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener{
         int i = 0;
         while ((newCity = br.readLine()) != null) {
             cityNameArray[i] = newCity;
-            System.out.println(i);
-            System.out.println(cityNameArray[i]);
             i++;
         }
         i=0;
