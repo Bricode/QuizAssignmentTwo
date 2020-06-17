@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Results"></activity>
         <activity android:name=".Quiz" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".HomePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

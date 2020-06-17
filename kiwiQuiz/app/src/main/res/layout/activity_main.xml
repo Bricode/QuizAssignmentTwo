@@ -5,57 +5,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#A9D9DF"
-    tools:context=".MainActivity">
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="296dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="67dp"
-        android:layout_marginBottom="264dp"
-        android:text="Exit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    tools:context=".HomePage">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginTop="53dp"
-        android:layout_marginEnd="72dp"
         android:layout_marginBottom="52dp"
         android:text="IN605 SKI FIELD QUIZ"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="298dp"
-        android:layout_height="131dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="65dp"
-        android:layout_marginBottom="41dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginBottom="92dp"
         android:text="COME ONE, COME ALL, TRY YOUR HAND AT SOME SNOW THEMED NEW ZEALAND GEOGRAPHY"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="296dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="65dp"
-        android:layout_marginBottom="34dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="49dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="235dp"
         android:onClick="onClick"
         android:text="Start"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

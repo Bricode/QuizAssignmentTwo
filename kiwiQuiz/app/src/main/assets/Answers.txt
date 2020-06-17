@@ -1,4 +1,3 @@
-
 Queenstown
 Dunedin
 Christchurch
@@ -21,13 +20,13 @@ Dunedin
 Oamaru
 hamilton
 Egmont National Park
-Managanui
+Manganui
 Egmont National Park
 Kaikoura
 St Arnaud
 Wanaka
 Queenstown
-Rainbow
+Rainbow Ski Field
 St Arnaud
 Queenstown
 Auckland
@@ -52,7 +51,7 @@ Riversdale
 Craigieburn
 Invercargill
 Broken River
-Craigeburn
+Craigieburn
 Christchurch
 Levin
 Mt Saint Patrick

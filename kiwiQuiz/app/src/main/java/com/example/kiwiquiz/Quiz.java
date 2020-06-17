@@ -8,10 +8,10 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,9 +21,7 @@ import java.io.InputStreamReader;
 public class Quiz extends AppCompatActivity implements View.OnClickListener{
 
     private int[] answered = new int[10];
-
     private Question[] questions = new Question[10];
-    private int score = 0;
     private int questionNumber = 0;
     private String[] cityNameArray;
     private RadioButton A;
@@ -33,6 +31,9 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener{
     private RadioGroup group;
     private TextView resortName;
     private String Answer;
+    private ImageView image;
+
+
 
     public void readFile() throws IOException {
         cityNameArray = new String[60];
@@ -42,10 +43,12 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener{
         InputStreamReader ir = new InputStreamReader(is);
         BufferedReader br = new BufferedReader(ir);
         String newCity;
-        System.out.println(br.readLine());
         int i = 0;
         while ((newCity = br.readLine()) != null) {
             cityNameArray[i] = newCity;
+
+            System.out.println(i);
+            System.out.println(cityNameArray[i]);
             i++;
         }
         i=0;
@@ -60,7 +63,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener{
         B.setText(questions[questionNumber].getQuestionB());
         C.setText(questions[questionNumber].getQuestionC());
         D.setText(questions[questionNumber].getQuestionD());
-        resortName.setText("What is the closest city to " + questions[questionNumber].getNameOfResort());
+        resortName.setText("Which of these is the closest to " + questions[questionNumber].getNameOfResort());
         Answer = questions[questionNumber].getAnswer();
         A.setChecked(false);
         B.setChecked(false);
@@ -78,6 +81,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener{
          D = findViewById(R.id.radioButtonD);
          group = findViewById(R.id.radioGroup);
          resortName = findViewById(R.id.questionText);
+         image = findViewById(R.id.PictureOfPlace);
         A.setOnClickListener(this);
         B.setOnClickListener(this);
         C.setOnClickListener(this);
@@ -120,56 +124,40 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if(questionNumber<questions.length) {
-            System.out.println(questionNumber);
-            System.out.println(questions.length);
             switch (group.getCheckedRadioButtonId()) {
                 case R.id.radioButtonA:
                     if (A.getText().equals(Answer)) {
-                        Toast.makeText(this, "Correct," + questions[questionNumber].getNameOfResort() + " is found close to " + A.getText(), Toast.LENGTH_LONG).show();
-                        alertBuilder("Correct," + questions[questionNumber].getNameOfResort() + " is found close to " + A.getText(), Boolean.TRUE);
+                        alertBuilder("Correct, " + questions[questionNumber].getNameOfResort() + " is found close to " + A.getText(), Boolean.TRUE);
                         answered[questionNumber] = 1;
-                        System.out.println(answered[0]);
                         break;
                     } else
-                        Toast.makeText(this, "Wrong", Toast.LENGTH_LONG).show();
-                        alertBuilder("Wrong" + questions[questionNumber].getNameOfResort() + " is found close to " + Answer, Boolean.TRUE);
+                        alertBuilder("Wrong, " + questions[questionNumber].getNameOfResort() + " is found close to " + Answer, Boolean.TRUE);
                     answered[questionNumber] = 0;
-                    System.out.println(answered[0]);
                     break;
                 case R.id.radioButtonB:
                     if (B.getText().equals(Answer)) {
-                        alertBuilder("Correct," + questions[questionNumber].getNameOfResort() + " is found close to " + B.getText(), Boolean.TRUE);
-                        Toast.makeText(this, "Correct", Toast.LENGTH_LONG).show();
-
-                        alertBuilder("Correct", Boolean.TRUE);
+                        alertBuilder("Correct, " + questions[questionNumber].getNameOfResort() + " is found close to " + B.getText(), Boolean.TRUE);
                         answered[questionNumber] = 1;
                         break;
                     } else
-                        Toast.makeText(this, "Wrong", Toast.LENGTH_LONG).show();
-                        alertBuilder("Wrong" + questions[questionNumber].getNameOfResort() + " is found close to " + Answer, Boolean.TRUE);
+                        alertBuilder("Wrong, " + questions[questionNumber].getNameOfResort() + " is found close to " + Answer, Boolean.TRUE);
                         answered[questionNumber] = 0;
                     break;
                 case R.id.radioButtonC:
                     if (C.getText().equals(Answer)) {
-                        alertBuilder("Correct," + questions[questionNumber].getNameOfResort() + " is found close to " + C.getText(), Boolean.TRUE);
-                        Toast.makeText(this, "Correct", Toast.LENGTH_LONG).show();
-
+                        alertBuilder("Correct, " + questions[questionNumber].getNameOfResort() + " is found close to " + C.getText(), Boolean.TRUE);
                         answered[questionNumber] = 1;
                         break;
                     } else
-                        Toast.makeText(this, "Wrong", Toast.LENGTH_LONG).show();
-                        alertBuilder("Wrong" + questions[questionNumber].getNameOfResort() + " is found close to " + Answer, Boolean.TRUE);
+                        alertBuilder("Wrong, " + questions[questionNumber].getNameOfResort() + " is found close to " + Answer, Boolean.TRUE);
                     break;
                 case R.id.radioButtonD:
                     if (D.getText().equals(Answer)) {
-                        alertBuilder("Correct," + questions[questionNumber].getNameOfResort() + " is found close to " + D.getText(), Boolean.TRUE);
-                        Toast.makeText(this, "Correct", Toast.LENGTH_LONG).show();
-
+                        alertBuilder("Correct, " + questions[questionNumber].getNameOfResort() + " is found close to " + D.getText(), Boolean.TRUE);
                         answered[questionNumber] = 1;
                         break;
                     } else
-                        Toast.makeText(this, "Wrong", Toast.LENGTH_LONG).show();
-                    alertBuilder("Wrong" + questions[questionNumber].getNameOfResort() + " is found close to " + Answer, Boolean.TRUE);
+                    alertBuilder("Wrong, " + questions[questionNumber].getNameOfResort() + " is found close to " + Answer, Boolean.TRUE);
                     answered[questionNumber] = 0;
                     break;
             }
